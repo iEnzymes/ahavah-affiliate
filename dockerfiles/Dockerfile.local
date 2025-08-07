@@ -1,0 +1,18 @@
+FROM node:20.13.1-slim
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Copy all files
+COPY . .
+
+# Added build dependencies
+RUN apt-get update && \
+    apt-get install -y build-essential python3 && \
+    ln -sf /usr/bin/python3 /usr/bin/python
+
+# Install Angular CLI globally
+RUN npm install -g @angular/cli@latest
+
+# Start the Angular development server
+CMD bash -c "npm install && ng serve --host 0.0.0.0 --port 80 --poll 2000"
