@@ -1,6 +1,6 @@
-import { ICategory } from '../interfaces/category.interface';
+import { IRoom } from '../interfaces/room.interface';
 
-export const mocksCategories: ICategory[] = [
+export const mocksRooms: IRoom[] = [
   {
     name: 'Living Room',
     description:

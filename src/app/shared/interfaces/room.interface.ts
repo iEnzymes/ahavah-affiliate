@@ -1,4 +1,4 @@
-export interface ICategory {
+export interface IRoom {
   name: string;
   description: string;
   images: string[];

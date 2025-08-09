@@ -1,15 +1,15 @@
 <div class="flex flex-col items-center justify-center py-8">
   <div class="my-8 flex flex-col items-center text-center">
-    <span class="text-xl text-gray-600 md:text-4xl">{{ category().name }}</span>
+    <span class="text-xl text-gray-600 md:text-4xl">{{ room().name }}</span>
     <span class="text-sm text-gray-600 md:text-base">{{
-      category().description
+      room().description
     }}</span>
   </div>
 
   <img
-    [src]="category().images[currentIndex]"
+    [src]="room().images[currentIndex]"
     alt=""
-    class="h-96 w-full transition-opacity duration-500"
+    class="h-96 w-full cursor-pointer transition-opacity duration-500"
     [class.opacity-0]="fade"
     [class.opacity-100]="!fade"
   />
@@ -17,10 +17,10 @@
   <div
     class="mt-1 grid h-20 w-full items-center justify-center gap-1 overflow-hidden"
     [style.gridTemplateColumns]="
-      'repeat(' + category().images.length + ', minmax(0, 1fr))'
+      'repeat(' + room().images.length + ', minmax(0, 1fr))'
     "
   >
-    @for (img of category().images; track $index) {
+    @for (img of room().images; track $index) {
       <img
         [src]="img"
         alt=""
@@ -34,11 +34,16 @@
       />
     }
   </div>
-  @if (category().quote) {
-    <div class="my-8 flex flex-col items-center text-center">
+  @if (room().quote) {
+    <div class="mt-8 flex flex-col items-center text-center">
       <span class="text-sm italic text-gray-600 md:text-base">{{
-        category().quote
+        room().quote
       }}</span>
     </div>
   }
+  <div
+    class="mt-8 cursor-pointer items-center justify-between rounded-lg bg-[#4A4A4A] px-4 py-2 text-white transition-colors duration-300 hover:bg-slate-300 hover:text-black"
+  >
+    <span [routerLink]="[room().name]" class="text-base">View More</span>
+  </div>
 </div>
