@@ -16,6 +16,14 @@ const routes: Routes = [
             (c) => c.RecommendedLandingComponent,
           ),
       },
+      {
+        path: ':room',
+        pathMatch: 'full',
+        loadComponent: () =>
+          import('./recommended-list/recommended-list.component').then(
+            (c) => c.RecommendedListComponent,
+          ),
+      },
     ],
   },
 ];
