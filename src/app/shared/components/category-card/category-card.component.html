@@ -1,0 +1,44 @@
+<div class="flex flex-col items-center justify-center py-8">
+  <div class="my-8 flex flex-col items-center text-center">
+    <span class="text-xl text-gray-600 md:text-4xl">{{ category().name }}</span>
+    <span class="text-sm text-gray-600 md:text-base">{{
+      category().description
+    }}</span>
+  </div>
+
+  <img
+    [src]="category().images[currentIndex]"
+    alt=""
+    class="h-96 w-full transition-opacity duration-500"
+    [class.opacity-0]="fade"
+    [class.opacity-100]="!fade"
+  />
+
+  <div
+    class="mt-1 grid h-20 w-full items-center justify-center gap-1 overflow-hidden"
+    [style.gridTemplateColumns]="
+      'repeat(' + category().images.length + ', minmax(0, 1fr))'
+    "
+  >
+    @for (img of category().images; track $index) {
+      <img
+        [src]="img"
+        alt=""
+        (click)="onSelectImage($index)"
+        (keydown.enter)="currentIndex = $index"
+        (keydown.space)="currentIndex = $index"
+        tabindex="0"
+        class="h-full w-auto cursor-pointer rounded border-2 object-cover transition-all duration-300"
+        [class.border-black]="currentIndex === $index"
+        [class.opacity-50]="currentIndex !== $index"
+      />
+    }
+  </div>
+  @if (category().quote) {
+    <div class="my-8 flex flex-col items-center text-center">
+      <span class="text-sm italic text-gray-600 md:text-base">{{
+        category().quote
+      }}</span>
+    </div>
+  }
+</div>
