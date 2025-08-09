@@ -1,1 +1,14 @@
-<p>recommended-landing works!</p>
+<div>
+  <div
+    class="flex h-80 w-screen items-center justify-center bg-[url(/img/mountains.jpg)] shadow-lg"
+  >
+    test
+  </div>
+  <div class="flex w-screen items-center justify-center">
+    <div class="w-10/12 md:w-9/12 lg:w-6/12">
+      @for (category of categories; track $index) {
+        <app-category-card [category]="category"> </app-category-card>
+      }
+    </div>
+  </div>
+</div>

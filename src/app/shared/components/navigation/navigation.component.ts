@@ -17,8 +17,7 @@ import { navItems } from '../../utils/navigation-items';
 export class NavigationComponent {
   items = navItems;
 
-  isMenuOpen = false;
-  isHidden = false;
+  isMenuOpen: boolean = false;
 
   onToggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
