@@ -14,7 +14,7 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
       .append('Content-Type', 'application/json')
       .append(
         'Authorization',
-        `Token f86e255a7dd8549acd54e446b21626327f8edd00`,
+        `Token ae0a6d5bd35a4396ca92077c51f9fc712e1ab2c8`,
       ),
   });
 
