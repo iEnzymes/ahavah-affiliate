@@ -1,39 +1,44 @@
 <div class="flex flex-col items-center justify-center py-8">
-  <div class="my-8 flex flex-col items-center text-center">
-    <span class="text-xl text-gray-600 md:text-4xl">{{ room().name }}</span>
+  <div class="my-8 flex flex-col items-center gap-4 text-center">
+    <span class="text-xl font-semibold text-gray-600 md:text-4xl">{{
+      room().name
+    }}</span>
     <span class="text-sm text-gray-600 md:text-base">{{
       room().description
     }}</span>
   </div>
 
   <img
-    [src]="room().images[currentIndex]"
+    [src]="room().images[currentIndex].image"
     alt=""
-    class="h-96 w-full cursor-pointer transition-opacity duration-500"
+    class="h-[200px] w-[1280px] cursor-pointer transition-opacity duration-500 md:h-[400px] lg:h-[580px]"
     [class.opacity-0]="fade"
     [class.opacity-100]="!fade"
   />
 
-  <div
-    class="mt-1 grid h-20 w-full items-center justify-center gap-1 overflow-hidden"
-    [style.gridTemplateColumns]="
-      'repeat(' + room().images.length + ', minmax(0, 1fr))'
-    "
-  >
-    @for (img of room().images; track $index) {
-      <img
-        [src]="img"
-        alt=""
-        (click)="onSelectImage($index)"
-        (keydown.enter)="currentIndex = $index"
-        (keydown.space)="currentIndex = $index"
-        tabindex="0"
-        class="h-full w-auto cursor-pointer rounded border-2 object-cover transition-all duration-300"
-        [class.border-black]="currentIndex === $index"
-        [class.opacity-50]="currentIndex !== $index"
-      />
-    }
-  </div>
+  @if (room().images.length > 1) {
+    <div
+      class="mt-1 grid h-16 w-full items-center justify-center gap-1 overflow-hidden md:h-20 lg:h-32"
+      [style.gridTemplateColumns]="
+        'repeat(' + room().images.length + ', minmax(0, 1fr))'
+      "
+    >
+      @for (img of room().images; track $index) {
+        <img
+          [src]="img.image"
+          alt=""
+          (click)="onSelectImage($index)"
+          (keydown.enter)="currentIndex = $index"
+          (keydown.space)="currentIndex = $index"
+          tabindex="0"
+          class="h-full w-auto cursor-pointer rounded border-2 object-cover transition-all duration-300"
+          [class.border-black]="currentIndex === $index"
+          [class.opacity-50]="currentIndex !== $index"
+        />
+      }
+    </div>
+  }
+
   @if (room().quote) {
     <div class="mt-8 flex flex-col items-center text-center">
       <span class="text-sm italic text-gray-600 md:text-base">{{
