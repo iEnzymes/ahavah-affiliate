@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { IconsModule } from '../../../core/icons/icons.module';
 import { navItems } from '../../utils/navigation-items';
@@ -15,9 +15,21 @@ import { navItems } from '../../utils/navigation-items';
   styleUrl: './navigation.component.scss',
 })
 export class NavigationComponent {
+  #router: Router = inject(Router);
+  isHidden = false;
   items = navItems;
 
   isMenuOpen: boolean = false;
+
+  currentRoute: string = '';
+
+  ngOnInit() {
+    this.currentRoute = this.#router.url;
+
+    this.#router.events.subscribe(() => {
+      this.currentRoute = this.#router.url;
+    });
+  }
 
   onToggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
