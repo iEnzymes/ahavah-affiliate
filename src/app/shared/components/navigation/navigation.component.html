@@ -1,4 +1,4 @@
-<div class="h-16 w-screen bg-[#f7f7f7]">
+<div class="h-16 w-full bg-[#f7f7f7]">
   <div
     class="mx-auto grid h-full max-w-screen-xl grid-cols-4 items-center justify-end px-4"
   >
@@ -22,7 +22,10 @@
     <div class="col-span-2 text-center md:col-span-1">LOGO HERE</div>
     <div class="col-span-3 hidden justify-end gap-4 md:flex">
       @for (item of items; track $index) {
-        <div>
+        <div
+          class="px-1 py-3 transition delay-500 duration-300 ease-in-out hover:border-b-2 focus:border-b-2"
+          [class.border-b-2]="currentRoute === item.url"
+        >
           <a class="font-thin" [routerLink]="item.url">{{ item.label }}</a>
         </div>
       }
@@ -30,7 +33,7 @@
   </div>
 
   <div
-    class="absolute min-h-[92%] w-screen scale-100 transform bg-[#4A4A4A] text-white opacity-0 transition-all duration-300 ease-out"
+    class="absolute z-50 min-h-screen w-full scale-100 transform bg-[#4A4A4A] text-white opacity-0 transition-all duration-300 ease-out"
     [class.opacity-100]="isMenuOpen"
     [class.scale-100]="isMenuOpen"
     [class.visible]="isMenuOpen"
