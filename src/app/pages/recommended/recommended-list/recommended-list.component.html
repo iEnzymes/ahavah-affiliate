@@ -1,4 +1,4 @@
-<div class="w-screen">
+<div class="w-full">
   <div
     class="flex h-80 items-center justify-center bg-[url(/img/mountains.jpg)] shadow-lg"
   >
@@ -9,15 +9,17 @@
     <span class="text-xl text-gray-600 md:text-4xl">Title Here(Room Name)</span>
   </div>
 
-  <div class="flex w-full items-center justify-center">
-    <div
-      class="grid h-[40rem] w-10/12 grid-cols-2 gap-4 md:grid-cols-3 lg:h-[65rem] xl:w-9/12"
-    >
-      @for (product of products; track $index) {
-        <div class="col-span-1 h-full bg-slate-500">
-          <app-product-card [product]="product"></app-product-card>
-        </div>
-      }
+  <div class="flex items-center justify-center">
+    <div class="w-8/12">
+      <div
+        class="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        @for (product of products; track $index) {
+          <div class="col-span-1 h-96">
+            <app-product-card [product]="product"></app-product-card>
+          </div>
+        }
+      </div>
     </div>
   </div>
 </div>
