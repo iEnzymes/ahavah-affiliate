@@ -13,4 +13,8 @@ export const navItems: INavigationItems[] = [
     label: 'Recommended',
     url: '/recommended',
   },
+  {
+    label: 'Products',
+    url: '/products',
+  },
 ];

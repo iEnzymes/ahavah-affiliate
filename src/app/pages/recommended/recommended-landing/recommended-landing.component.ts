@@ -17,7 +17,7 @@ export class RecommendedLandingComponent implements OnInit {
   rooms: IRoom[] = [];
 
   ngOnInit() {
-    this.#apiService.getCategory().subscribe((data) => {
+    this.#apiService.getRooms().subscribe((data) => {
       this.rooms = data;
     });
   }

@@ -1,15 +1,11 @@
+import { IImage } from './image.interface';
+
 export interface IRoom {
   id: number;
   name: string;
   description: string;
-  images: IRoomImage[];
+  images: IImage[];
   quote?: string;
   date_added: Date;
   updated_at: Date;
-}
-
-export interface IRoomImage {
-  id: number;
-  image: string;
-  uploaded_at: Date;
 }
