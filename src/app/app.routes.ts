@@ -17,10 +17,8 @@ export const routes: Routes = [
       import('./pages/about/about.routes').then((m) => m.AboutRoutes),
   },
   {
-    path: 'recommended',
+    path: 'products',
     loadChildren: () =>
-      import('./pages/recommended/recommended.routes').then(
-        (m) => m.RecommendedRoutes,
-      ),
+      import('./pages/product/product.routes').then((m) => m.ProductRoutes),
   },
 ];

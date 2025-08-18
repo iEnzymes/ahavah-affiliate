@@ -4,10 +4,10 @@ import { RouterOutlet } from '@angular/router';
 import { LayoutComponent } from '../../shared/components/layout/layout.component';
 
 @Component({
-  selector: 'app-recommended',
+  selector: 'app-product',
   standalone: true,
   imports: [RouterOutlet, LayoutComponent],
-  templateUrl: './recommended.component.html',
-  styleUrl: './recommended.component.scss',
+  templateUrl: './product.component.html',
+  styleUrl: './product.component.scss',
 })
-export class RecommendedComponent {}
+export class ProductComponent {}

@@ -1,5 +1,4 @@
 import { IImage } from './image.interface';
-import { IRoom } from './room.interface';
 
 export interface IProduct {
   id: number;
@@ -9,12 +8,7 @@ export interface IProduct {
   link: string;
   date_added: Date;
   updated_at: Date;
-  room: string;
   category: string;
+  subcategory: string;
   tag: number[];
-}
-
-export interface IProductRoom {
-  products: IProduct[];
-  room: IRoom;
 }
