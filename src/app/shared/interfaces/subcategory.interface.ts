@@ -1,6 +1,6 @@
 import { IImage } from './image.interface';
 
-export interface IRoom {
+export interface ISubCategory {
   id: number;
   name: string;
   description: string;

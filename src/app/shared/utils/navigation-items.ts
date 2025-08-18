@@ -10,10 +10,6 @@ export const navItems: INavigationItems[] = [
     url: '/about',
   },
   {
-    label: 'Recommended',
-    url: '/recommended',
-  },
-  {
     label: 'Products',
     url: '/products',
   },
