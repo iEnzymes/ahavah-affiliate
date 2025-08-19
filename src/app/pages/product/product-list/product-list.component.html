@@ -1,0 +1,67 @@
+<div class="min-h-screen w-full px-4 py-4 md:px-12 lg:px-24">
+  <app-search> </app-search>
+
+  <div class="grid min-h-screen w-full grid-cols-12">
+    <div
+      class="col-span-12 flex flex-col items-center justify-center text-sm text-[#4A4A4A] md:text-base lg:hidden"
+    >
+      <span>CATEGORIES</span>
+      <button
+        class="scale-75 transform duration-200 hover:scale-100"
+        (click)="onToggleCategories()"
+      >
+        <mat-icon
+          class="cursor-pointer"
+          matTooltip="Filter products."
+          [svgIcon]="
+            isMenuOpen
+              ? 'heroicon_outline:chevron-double-up'
+              : 'heroicon_outline:chevron-double-down'
+          "
+        />
+      </button>
+      <div
+        class="col-span-12 w-full overflow-hidden transition-[max-height] duration-500 ease-out"
+        [class.max-h-0]="!isMenuOpen"
+        [class.max-h-[500px]]="isMenuOpen"
+      >
+        <div class="p-4 text-sm md:text-base">
+          Category content goes here. Category content goes here. Category
+          content goes here. Category content goes here. Category content goes
+          here. Category content goes here. Category content goes here. Category
+          content goes here. Category content goes here. Category content goes
+          here. Category content goes here. Category content goes here.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-2 hidden py-8 md:block">
+      <div class="mb-8">
+        <span class="text-base uppercase"> Categories: </span>
+        <app-filter-list
+          [items]="categories"
+          (outputSelected)="onCategorySelected($event)"
+        ></app-filter-list>
+      </div>
+      <div>
+        <span class="text-base uppercase"> Filters: </span>
+        <app-filter-list
+          [items]="subcategories"
+          (outputSelected)="onCategorySelected($event)"
+        ></app-filter-list>
+      </div>
+    </div>
+
+    <div class="col-span-12 lg:col-span-10">
+      <div
+        class="grid w-full grid-cols-2 gap-4 py-8 pl-4 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        @for (product of products; track $index) {
+          <div class="col-span-1 h-96">
+            <app-item-card [item]="product"></app-item-card>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

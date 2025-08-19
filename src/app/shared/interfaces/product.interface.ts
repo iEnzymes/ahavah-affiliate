@@ -3,6 +3,7 @@ import { IImage } from './image.interface';
 export interface IProduct {
   id: number;
   images: IImage[];
+  image: IImage;
   name: string;
   description: string;
   link: string;
