@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 
-import { CategoryCardComponent } from '../../../shared/components/category-card/category-card.component';
+import { ItemCardComponent } from '../../../shared/components/item-card/item-card.component';
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { ICategory } from '../../../shared/interfaces/category.interface';
 import { ApiService } from '../../../shared/services/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from '../../../shared/services/api.service';
 @Component({
   selector: 'app-product-landing',
   standalone: true,
-  imports: [SearchComponent, CategoryCardComponent],
+  imports: [SearchComponent, ItemCardComponent],
   templateUrl: './product-landing.component.html',
   styleUrl: './product-landing.component.scss',
 })

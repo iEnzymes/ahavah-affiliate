@@ -16,6 +16,14 @@ const routes: Routes = [
             (c) => c.ProductLandingComponent,
           ),
       },
+      {
+        path: ':category_id',
+        pathMatch: 'full',
+        loadComponent: () =>
+          import('./product-list/product-list.component').then(
+            (c) => c.ProductListComponent,
+          ),
+      },
     ],
   },
 ];

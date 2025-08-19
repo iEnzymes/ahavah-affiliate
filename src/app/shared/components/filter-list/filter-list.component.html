@@ -1,0 +1,15 @@
+<div>
+  <ul class="divide-y divide-gray-200 rounded-lg bg-white px-4 py-2">
+    @for (item of items(); track $index) {
+      <li
+        tabindex="0"
+        (keydown.enter)="onSelect(item)"
+        (keydown.space)="onSelect(item)"
+        (click)="onSelect(item)"
+        class="cursor-pointer rounded px-4 py-2 transition-colors hover:bg-gray-100"
+      >
+        {{ item.name }}
+      </li>
+    }
+  </ul>
+</div>
