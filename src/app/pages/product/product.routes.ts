@@ -17,7 +17,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: ':category_id',
+        path: 'list/:category_id',
         pathMatch: 'full',
         loadComponent: () =>
           import('./product-list/product-list.component').then(
