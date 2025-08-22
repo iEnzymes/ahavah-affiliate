@@ -8,8 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IconsModule } from '../../../core/icons/icons.module';
 import { FilterListComponent } from '../../../shared/components/filter-list/filter-list.component';
 import { ItemCardComponent } from '../../../shared/components/item-card/item-card.component';
+import { ProductGalleryComponent } from '../../../shared/components/product-gallery/product-gallery.component';
+import { ProductModalComponent } from '../../../shared/components/product-modal/product-modal.component';
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { ICategory } from '../../../shared/interfaces/category.interface';
+import { IItemCard } from '../../../shared/interfaces/itemcard.interface';
 import { IProduct } from '../../../shared/interfaces/product.interface';
 import { ISubCategory } from '../../../shared/interfaces/subcategory.interface';
 import { ApiService } from '../../../shared/services/api.service';
@@ -20,6 +23,8 @@ import { ApiService } from '../../../shared/services/api.service';
   imports: [
     SearchComponent,
     ItemCardComponent,
+    ProductModalComponent,
+    ProductGalleryComponent,
     MatIcon,
     MatButtonModule,
     IconsModule,
@@ -34,15 +39,19 @@ export class ProductListComponent {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
 
+  selectedProduct: IItemCard | null = null;
+
   categoryId = signal<number | null>(
     this.route.snapshot.params['category_id'] ?? null,
   );
   subcategoryId = signal<number | null>(null);
-
-  isMenuOpen: boolean = false;
   products: IProduct[] = [];
+
   categories: { id: number; name: string }[] = [];
   subcategories: { id: number; name: string }[] = [];
+
+  showModal = false;
+  isMenuOpen: boolean = false;
 
   constructor() {
     const productParams = computed(() => ({
@@ -93,5 +102,21 @@ export class ProductListComponent {
 
   onSubCategorySelected(selected: { id: number; name: string }) {
     this.subcategoryId.set(selected.id);
+  }
+
+  onSelectProduct(product: IItemCard) {
+    this.selectedProduct = product;
+    this.showModal = true;
+  }
+
+  onOpenLink(link: string | undefined) {
+    if (link) {
+      window.open(link, '_blank');
+    }
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.selectedProduct = null;
   }
 }
