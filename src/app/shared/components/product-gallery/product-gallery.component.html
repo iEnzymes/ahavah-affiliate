@@ -1,0 +1,32 @@
+<div class="flex flex-col items-center justify-center py-8">
+  <img
+    [src]="item()?.[currentIndex]?.image"
+    alt=""
+    class="h-64 w-auto cursor-pointer transition-opacity duration-500"
+    [class.opacity-0]="fade"
+    [class.opacity-100]="!fade"
+  />
+
+  @if ((item()?.length ?? 0) > 1) {
+    <div
+      class="mt-1 grid h-auto w-full items-center justify-center gap-1 overflow-hidden"
+      [style.gridTemplateColumns]="
+        'repeat(' + (item()?.length ?? 0) + ', minmax(0, 1fr))'
+      "
+    >
+      @for (img of item(); track $index) {
+        <img
+          [src]="img.image"
+          alt=""
+          (click)="onSelectImage($index)"
+          (keydown.enter)="currentIndex = $index"
+          (keydown.space)="currentIndex = $index"
+          tabindex="0"
+          class="h-full w-auto cursor-pointer rounded border-2 object-cover transition-all duration-300"
+          [class.border-black]="currentIndex === $index"
+          [class.opacity-50]="currentIndex !== $index"
+        />
+      }
+    </div>
+  }
+</div>

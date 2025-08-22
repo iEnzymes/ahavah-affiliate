@@ -2,10 +2,10 @@ import { IImage } from './image.interface';
 
 export interface IProduct {
   id: number;
-  images: IImage[];
-  image: IImage;
   name: string;
   description: string;
+  images?: IImage[];
+  image: IImage;
   link: string;
   date_added: Date;
   updated_at: Date;

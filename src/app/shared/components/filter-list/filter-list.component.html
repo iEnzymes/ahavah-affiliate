@@ -6,7 +6,8 @@
         (keydown.enter)="onSelect(item)"
         (keydown.space)="onSelect(item)"
         (click)="onSelect(item)"
-        class="cursor-pointer rounded px-4 py-2 transition-colors hover:bg-gray-100"
+        class="cursor-pointer rounded px-4 py-2 transition-colors duration-300 hover:bg-gray-200"
+        [class.bg-gray-200]="activeItem === item.id"
       >
         {{ item.name }}
       </li>

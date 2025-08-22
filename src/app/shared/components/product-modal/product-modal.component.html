@@ -1,0 +1,51 @@
+<div
+  class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300"
+  [class.opacity-100]="showModal()"
+  [class.pointer-events-auto]="showModal()"
+>
+  <div
+    class="relative w-full bg-white p-10 shadow-2xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl"
+  >
+    <button
+      class="absolute right-6 top-6 text-2xl font-bold text-gray-400 transition hover:text-gray-700"
+      (click)="close.emit()"
+      aria-label="Close"
+    >
+      &times;
+    </button>
+
+    <div class="flex flex-col md:flex-row">
+      <div class="w-full p-4 md:w-1/2">
+        <ng-content></ng-content>
+      </div>
+
+      <div class="w-full content-center p-4 md:w-1/2">
+        <h2
+          class="mb-6 text-xl font-extrabold text-gray-800 md:text-2xl lg:text-3xl"
+        >
+          {{ product()?.name }}
+        </h2>
+        <div class="mb-8 text-sm text-gray-600 md:text-base lg:text-lg">
+          <p>
+            {{ product()?.description || 'No description available.' }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-4">
+      <button
+        class="rounded bg-primary-50 px-4 py-2 text-lg font-semibold text-white shadow transition hover:bg-blue-700"
+        (click)="openLink.emit(product()?.link)"
+      >
+        I Want This
+      </button>
+      <button
+        class="rounded bg-[#4A4A4A] px-4 py-2 text-lg font-semibold text-white shadow transition hover:bg-blue-700"
+        (click)="close.emit()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
