@@ -1,0 +1,14 @@
+<div>
+  @for (item of items(); track $index) {
+    <a
+      tabindex="0"
+      (keydown.enter)="onSelect(item)"
+      (keydown.space)="onSelect(item)"
+      (click)="onSelect(item)"
+      class="mr-1 inline cursor-pointer rounded-lg px-2 py-1 leading-8 transition-colors duration-300 hover:bg-gray-200"
+      [class.bg-gray-200]="activeItem === item.id"
+    >
+      {{ item.name }}
+    </a>
+  }
+</div>
