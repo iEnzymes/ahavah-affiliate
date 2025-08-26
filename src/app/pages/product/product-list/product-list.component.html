@@ -20,6 +20,7 @@
           "
         />
       </button>
+
       <div
         class="col-span-12 w-full overflow-hidden transition-[max-height] duration-500 ease-out"
         [class.max-h-0]="!isMenuOpen"
@@ -44,49 +45,49 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-span-2 hidden py-8 lg:block">
-        <div class="mb-8">
-          <span class="text-base uppercase"> Categories: </span>
-          <app-filter-list
-            [items]="categories"
-            (outputSelected)="onCategorySelected($event)"
-          ></app-filter-list>
-        </div>
-        <div>
-          <span class="text-base uppercase"> Filters: </span>
-          <app-filter-list
-            [items]="subcategories"
-            (outputSelected)="onSubCategorySelected($event)"
-          ></app-filter-list>
-        </div>
+    <div class="col-span-2 hidden py-8 lg:block">
+      <div class="mb-8">
+        <span class="text-base uppercase"> Categories: </span>
+        <app-filter-list
+          [items]="categories"
+          (outputSelected)="onCategorySelected($event)"
+        ></app-filter-list>
       </div>
+      <div>
+        <span class="text-base uppercase"> Filters: </span>
+        <app-filter-list
+          [items]="subcategories"
+          (outputSelected)="onSubCategorySelected($event)"
+        ></app-filter-list>
+      </div>
+    </div>
 
-      <div class="col-span-12 lg:col-span-10">
-        <div
-          class="grid w-full grid-cols-2 gap-4 py-8 pl-4 lg:grid-cols-3 xl:grid-cols-4"
-        >
-          @for (product of products; track $index) {
-            <div class="col-span-1 h-96">
-              <app-item-card
-                [item]="product"
-                (outputSelected)="onSelectProduct($event)"
-              ></app-item-card>
-            </div>
-          }
-        </div>
+    <div class="col-span-12 lg:col-span-10">
+      <div
+        class="grid w-full grid-cols-2 gap-4 py-8 pl-4 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        @for (product of products; track $index) {
+          <div class="col-span-1 h-96">
+            <app-item-card
+              [item]="product"
+              (outputSelected)="onSelectProduct($event)"
+            ></app-item-card>
+          </div>
+        }
       </div>
     </div>
   </div>
-
-  <app-product-modal
-    [showModal]="showModal"
-    [product]="selectedProduct"
-    (openLink)="onOpenLink($event)"
-    (close)="closeModal()"
-  >
-    <app-product-gallery
-      [item]="selectedProduct?.images ?? []"
-    ></app-product-gallery>
-  </app-product-modal>
 </div>
+
+<app-product-modal
+  [showModal]="showModal"
+  [product]="selectedProduct"
+  (openLink)="onOpenLink($event)"
+  (close)="closeModal()"
+>
+  <app-product-gallery
+    [item]="selectedProduct?.images ?? []"
+  ></app-product-gallery>
+</app-product-modal>
