@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { IconsModule } from '../../../core/icons/icons.module';
+import { FilterListMobileComponent } from '../../../shared/components/filter-list-mobile/filter-list-mobile.component';
 import { FilterListComponent } from '../../../shared/components/filter-list/filter-list.component';
 import { ItemCardComponent } from '../../../shared/components/item-card/item-card.component';
 import { ProductGalleryComponent } from '../../../shared/components/product-gallery/product-gallery.component';
@@ -25,6 +26,7 @@ import { ApiService } from '../../../shared/services/api.service';
     ItemCardComponent,
     ProductModalComponent,
     ProductGalleryComponent,
+    FilterListMobileComponent,
     MatIcon,
     MatButtonModule,
     IconsModule,
